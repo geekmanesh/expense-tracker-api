@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="Hnf7OF4NybADlc64twdx">
+    <mxGraphModel dx="1030" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="350" width="350" x="90" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-8" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="250" width="250" x="90" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="130" width="350" x="90" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1;fontSize=50;" value="Expense" vertex="1">
+          <mxGeometry height="130" width="350" x="90" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=20;" value="&lt;div&gt;&amp;nbsp; + PK id: int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="350" x="90" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=20;" value="&amp;nbsp; + description: str" vertex="1">
+          <mxGeometry height="60" width="350" x="90" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="yUSN5SmbY_0-_PvcRzdo-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontSize=20;" value="&amp;nbsp; + amount: float" vertex="1">
+          <mxGeometry height="60" width="350" x="90" y="330" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
