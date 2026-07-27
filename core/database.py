@@ -10,17 +10,6 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
 
 
-class Expense(Base):
-    __tablename__ = "expenses"
-
-    id = Column(Integer(), primary_key=True, unique=True, autoincrement=True)
-    description = Column(String(500))
-    amount = Column(Float())
-
-    def __repr__(self):
-        return self.description
-
-
 def get_db():
     db = SessionLocal()
 
