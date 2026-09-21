@@ -1,0 +1,53 @@
+# English translations
+msgid ""
+msgstr ""
+"Project-Id-Version: expense-tracker-api 1.0\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "welcome"
+msgstr "Welcome!"
+
+msgid "expense_created"
+msgstr "Expense created successfully."
+
+msgid "expense_updated"
+msgstr "Expense updated successfully."
+
+msgid "expense_not_found"
+msgstr "Expense not found."
+
+msgid "invalid_credentials"
+msgstr "Invalid username or password."
+
+msgid "logged_in"
+msgstr "Logged in successfully."
+
+msgid "logged_out"
+msgstr "Logged out successfully."
+
+msgid "session_renewed"
+msgstr "Session renewed."
+
+msgid "email_already_registered"
+msgstr "Email already registered."
+
+msgid "user_no_longer_exists"
+msgstr "User no longer exists."
+
+msgid "not_authenticated"
+msgstr "Not authenticated."
+
+msgid "token_expired"
+msgstr "Token has expired."
+
+msgid "invalid_token"
+msgstr "Invalid token."
+
+msgid "access_token_required"
+msgstr "access token required."
+
+msgid "refresh_token_required"
+msgstr "refresh token required."

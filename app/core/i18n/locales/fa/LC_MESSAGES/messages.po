@@ -1,0 +1,53 @@
+# Persian (Farsi) translations
+msgid ""
+msgstr ""
+"Project-Id-Version: expense-tracker-api 1.0\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "welcome"
+msgstr "خوش آمدید!"
+
+msgid "expense_created"
+msgstr "هزینه با موفقیت ایجاد شد."
+
+msgid "expense_updated"
+msgstr "هزینه با موفقیت به‌روزرسانی شد."
+
+msgid "expense_not_found"
+msgstr "هزینه پیدا نشد."
+
+msgid "invalid_credentials"
+msgstr "نام کاربری یا رمز عبور اشتباه است."
+
+msgid "logged_in"
+msgstr "با موفقیت وارد شدید."
+
+msgid "logged_out"
+msgstr "با موفقیت خارج شدید."
+
+msgid "session_renewed"
+msgstr "نشست تمدید شد."
+
+msgid "email_already_registered"
+msgstr "این ایمیل قبلاً ثبت شده است."
+
+msgid "user_no_longer_exists"
+msgstr "کاربر دیگر وجود ندارد."
+
+msgid "not_authenticated"
+msgstr "احراز هویت نشده‌اید."
+
+msgid "token_expired"
+msgstr "توکن منقضی شده است."
+
+msgid "invalid_token"
+msgstr "توکن نامعتبر است."
+
+msgid "access_token_required"
+msgstr "توکن دسترسی لازم است."
+
+msgid "refresh_token_required"
+msgstr "توکن تازه‌سازی لازم است."
