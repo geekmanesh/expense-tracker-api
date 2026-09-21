@@ -1,8 +1,8 @@
-from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
 
-from auth.security import verify_password, hash_password
-from users.models import User
+from app.auth.security import hash_password, verify_password
+from app.users.models import User
 
 
 def authenticate_user(db: Session, email: str, password: str) -> User | None:
@@ -23,9 +23,8 @@ def create_user(db: Session, email: str, password: str) -> User:
     db.add(user)
     try:
         db.commit()
-    except IntegrityError as e:
+    except IntegrityError:
         db.rollback()
-        print("IntegrityError detail:", e.orig)
-        raise ValueError("Email already registered")
+        raise ValueError("Email already registered") from None
     db.refresh(user)
     return user

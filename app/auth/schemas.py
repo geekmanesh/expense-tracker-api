@@ -1,14 +1,9 @@
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr, field_validator
 
 
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
-
-
-class TokenPayload(BaseModel):
-    user_id: int
-    type: str
 
 
 class MessageResponse(BaseModel):
@@ -28,8 +23,7 @@ class RegisterRequest(BaseModel):
 
 
 class UserPublic(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     email: EmailStr
-
-    class Config:
-        from_attributes = True

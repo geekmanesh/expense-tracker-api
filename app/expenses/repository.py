@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from expenses.models import Expense
+from app.expenses.models import Expense
 
 
 class ExpenseRepository:

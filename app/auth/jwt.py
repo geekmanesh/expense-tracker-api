@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 import jwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from core.config import settings
+from app.core.config import settings
 
 ALGORITHM = "HS256"
 
@@ -28,8 +28,5 @@ def generate_refresh_token(user_id: int, expires_in: int = 60 * 60 * 24 * 7) -> 
 
 
 def decode_token(token: str) -> dict:
-    """
-    Raises ExpiredSignatureError or InvalidTokenError on failure.
-    Caller (dependencies.py) turns these into HTTP responses.
-    """
+    """Raises ExpiredSignatureError or InvalidTokenError on failure."""
     return jwt.decode(token, settings.SECRET_KEY, algorithms=[ALGORITHM])

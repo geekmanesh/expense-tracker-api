@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, field_serializer, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
 
 
 class BaseExpenseSchema(BaseModel):
@@ -12,16 +12,15 @@ class BaseExpenseSchema(BaseModel):
     amount: float = Field(..., gt=0, description="Expense amount", examples=[98.99])
 
     @field_validator("description")
-    def validate_description(cls, value):
+    @classmethod
+    def validate_description(cls, value: str) -> str:
         value = value.strip()
-
         if not value:
             raise ValueError("Description cannot be empty")
-
         return value
 
     @field_serializer("description")
-    def serialize_description(value):
+    def serialize_description(self, value: str) -> str:
         return value.capitalize()
 
 
@@ -29,9 +28,11 @@ class ExpenseCreateSchema(BaseExpenseSchema):
     pass
 
 
-class ExpenseResponseSchema(BaseExpenseSchema):
-    id: int
-
-
 class ExpenseUpdateSchema(BaseExpenseSchema):
     pass
+
+
+class ExpenseResponseSchema(BaseExpenseSchema):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int

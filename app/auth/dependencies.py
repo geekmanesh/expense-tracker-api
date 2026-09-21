@@ -1,12 +1,12 @@
 from typing import Optional
 
 from fastapi import Depends, HTTPException, Request, status
-from sqlalchemy.orm import Session
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+from sqlalchemy.orm import Session
 
-from auth.jwt import decode_token
-from core.database import get_db
-from users.models import User
+from app.auth.jwt import decode_token
+from app.core.database import get_db
+from app.users.models import User
 
 ACCESS_COOKIE_NAME = "access_token"
 REFRESH_COOKIE_NAME = "refresh_token"

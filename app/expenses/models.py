@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from core.database import Base
+from app.core.database import Base
 
 
 class Expense(Base):
@@ -10,7 +10,6 @@ class Expense(Base):
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String(100), nullable=False)
     amount = Column(Float, nullable=False)
-
     user_id = Column(
         Integer,
         ForeignKey("users.id"),
@@ -18,10 +17,7 @@ class Expense(Base):
         index=True,
     )
 
-    user = relationship(
-        "User",
-        back_populates="expenses",
-    )
+    user = relationship("User", back_populates="expenses")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Expense(id={self.id}, description='{self.description}')>"
