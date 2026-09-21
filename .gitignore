@@ -1,7 +1,66 @@
+# Bytecode / caches
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
 .venv/
 venv/
+env/
+ENV/
+
+# Environment & secrets (keep .env.example tracked)
 .env
+.env.*
+!.env.example
+
+# Local databases
 *.db
+*.sqlite
+*.sqlite3
+
+# Testing / coverage
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Type checkers / linters / formatters
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+.pyre/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+tmp/
+temp/
+
+# Note: compiled gettext .mo files under app/core/i18n/locales/
+# are intentionally tracked so the app runs without a compile step.
