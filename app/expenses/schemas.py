@@ -36,3 +36,10 @@ class ExpenseResponseSchema(BaseExpenseSchema):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
+
+
+class ExpenseMutationResponse(BaseModel):
+    """Expense payload plus a localized success message."""
+
+    message: str
+    expense: ExpenseResponseSchema

@@ -1,13 +1,15 @@
 from fastapi import HTTPException, status
 
+from app.core.i18n.translator import Translator
 from app.expenses.models import Expense
 from app.expenses.repository import ExpenseRepository
 from app.expenses.schemas import ExpenseCreateSchema, ExpenseUpdateSchema
 
 
 class ExpenseService:
-    def __init__(self, repository: ExpenseRepository):
+    def __init__(self, repository: ExpenseRepository, translator: Translator):
         self.repository = repository
+        self.translator = translator
 
     def get_all_expenses(self) -> list[Expense]:
         return self.repository.get_all()
@@ -17,7 +19,7 @@ class ExpenseService:
         if expense is None:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail="Expense not found",
+                detail=self.translator("expense_not_found"),
             )
         return expense
 

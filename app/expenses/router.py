@@ -2,9 +2,11 @@ from typing import List
 
 from fastapi import APIRouter, Depends, Path, status
 
+from app.core.i18n import Translator, get_translator
 from app.expenses.dependencies import get_expense_service
 from app.expenses.schemas import (
     ExpenseCreateSchema,
+    ExpenseMutationResponse,
     ExpenseResponseSchema,
     ExpenseUpdateSchema,
 )
@@ -28,23 +30,33 @@ def get_expense(
 
 @router.post(
     "",
-    response_model=ExpenseResponseSchema,
+    response_model=ExpenseMutationResponse,
     status_code=status.HTTP_201_CREATED,
 )
 def create_expense(
     request: ExpenseCreateSchema,
     service: ExpenseService = Depends(get_expense_service),
+    translator: Translator = Depends(get_translator),
 ):
-    return service.create_expense(request)
+    expense = service.create_expense(request)
+    return {
+        "message": translator("expense_created"),
+        "expense": expense,
+    }
 
 
-@router.put("/{expense_id}", response_model=ExpenseResponseSchema)
+@router.put("/{expense_id}", response_model=ExpenseMutationResponse)
 def update_expense(
     request: ExpenseUpdateSchema,
     expense_id: int = Path(ge=1),
     service: ExpenseService = Depends(get_expense_service),
+    translator: Translator = Depends(get_translator),
 ):
-    return service.update_expense(request, expense_id)
+    expense = service.update_expense(request, expense_id)
+    return {
+        "message": translator("expense_updated"),
+        "expense": expense,
+    }
 
 
 @router.delete("/{expense_id}", status_code=status.HTTP_204_NO_CONTENT)

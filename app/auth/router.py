@@ -11,6 +11,7 @@ from app.auth.schemas import LoginRequest, MessageResponse, RegisterRequest, Use
 from app.auth.service import authenticate_user, create_user
 from app.core.config import settings
 from app.core.database import get_db
+from app.core.i18n import Translator, get_translator
 from app.users.models import User
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -44,27 +45,36 @@ def _set_auth_cookies(response: Response, user_id: int) -> None:
 
 
 @router.post("/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
-def register(payload: RegisterRequest, db: Session = Depends(get_db)):
+def register(
+    payload: RegisterRequest,
+    db: Session = Depends(get_db),
+    translator: Translator = Depends(get_translator),
+):
     try:
         user = create_user(db, payload.email, payload.password)
-    except ValueError as e:
+    except ValueError:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail=str(e),
+            detail=translator("email_already_registered"),
         )
     return user
 
 
 @router.post("/login", response_model=MessageResponse)
-def login(payload: LoginRequest, response: Response, db: Session = Depends(get_db)):
+def login(
+    payload: LoginRequest,
+    response: Response,
+    db: Session = Depends(get_db),
+    translator: Translator = Depends(get_translator),
+):
     user = authenticate_user(db, payload.email, payload.password)
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid email or password",
+            detail=translator("invalid_credentials"),
         )
     _set_auth_cookies(response, user.id)
-    return {"message": "Logged in successfully"}
+    return {"message": translator("logged_in")}
 
 
 @router.post("/refresh", response_model=MessageResponse)
@@ -72,20 +82,24 @@ def refresh(
     response: Response,
     db: Session = Depends(get_db),
     refresh_payload: dict = Depends(get_refresh_payload),
+    translator: Translator = Depends(get_translator),
 ):
     user_id = refresh_payload["user_id"]
     user = db.query(User).filter_by(id=user_id).one_or_none()
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User no longer exists",
+            detail=translator("user_no_longer_exists"),
         )
     _set_auth_cookies(response, user.id)
-    return {"message": "Session renewed"}
+    return {"message": translator("session_renewed")}
 
 
 @router.post("/logout", response_model=MessageResponse)
-def logout(response: Response):
+def logout(
+    response: Response,
+    translator: Translator = Depends(get_translator),
+):
     response.delete_cookie(ACCESS_COOKIE_NAME, path="/")
     response.delete_cookie(REFRESH_COOKIE_NAME, path="/auth/refresh")
-    return {"message": "Logged out successfully"}
+    return {"message": translator("logged_out")}
