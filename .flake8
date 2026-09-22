@@ -1,0 +1,15 @@
+[flake8]
+extend-ignore = 
+    E203,
+    E501,
+
+exclude = 
+    .git,
+    .venv,
+    .env,
+    venv,
+    __pycache__,
+    alembic,
+    migrations,
+
+max-complexity = 10
