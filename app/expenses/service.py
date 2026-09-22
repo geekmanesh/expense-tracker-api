@@ -30,9 +30,7 @@ class ExpenseService:
         )
         return self.repository.create(expense)
 
-    def update_expense(
-        self, request: ExpenseUpdateSchema, expense_id: int
-    ) -> Expense:
+    def update_expense(self, request: ExpenseUpdateSchema, expense_id: int) -> Expense:
         expense = self.get_expense(expense_id)
         expense.description = request.description
         expense.amount = request.amount

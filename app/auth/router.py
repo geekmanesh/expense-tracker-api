@@ -44,7 +44,9 @@ def _set_auth_cookies(response: Response, user_id: int) -> None:
     )
 
 
-@router.post("/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED
+)
 def register(
     payload: RegisterRequest,
     db: Session = Depends(get_db),
